@@ -1,0 +1,52 @@
+body {
+  background-color: #e8e8e8;
+}
+
+/* Show article */
+
+.img-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+  width: 100%;
+  height: 30vh;
+}
+
+/* End Show article */
+
+/* Index articles */
+
+.move-arrow:hover .fa-arrow-right {
+  transition: margin-left 0.3s;
+  margin-left: 15px;
+}
+
+.move-arrow .fa-arrow-right {
+  transition: margin-left 0.3s;
+  margin-left: 0;
+}
+
+/* End index articles */
+
+/* Like article */
+
+.fa-heart {
+  color: #d9534f;
+}
+
+.far.fa-heart:hover,
+.fas.fa-heart:hover {
+  cursor: pointer;
+}
+
+.fa-sm {
+  transition: 1s;
+}
+
+.fa-lg {
+  transition: 1s;
+}
+
+/* End like article*/
+
