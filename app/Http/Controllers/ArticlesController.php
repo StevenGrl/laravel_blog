@@ -45,7 +45,8 @@ class ArticlesController extends Controller
     }
 
     public function new() {
-        return view('articles.new');
+        $list_categories = Category::all()->pluck('name', 'id');
+        return view('articles.new', compact('list_categories'));
     }
 
     public function store(ArticleRequest $request) {

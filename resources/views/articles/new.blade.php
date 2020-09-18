@@ -24,6 +24,10 @@
                     {!! Form::label('image', 'Choisir une image..', ['class' => 'custom-file-label']) !!}
                 </div>
                 <div class="form-group">
+                    {!! Form::label('category_id', 'Catégorie') !!}
+                    {!! Form::select('category_id', $list_categories, null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
                     {!! Form::label('content', 'Contenu') !!}
                     {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
                 </div>
