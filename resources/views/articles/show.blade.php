@@ -66,11 +66,11 @@
                             {{--{{ count($article->comments) }} <i class="far fa-comments"></i>--}}
                             50 <i class="far fa-comments"></i> |
                             {{--@if(is_granted('like', article))--}}
-                                {{--@if(article in app.user.favouriteArticles)--}}
-                                    {{--<i class="fas fa-heart fa-lg"></i> <small id="remove_fav">(Enlever des favoris)</small>--}}
-                                {{--@else--}}
+                                @if($isLiked)
+                                    <i class="fas fa-heart fa-lg"></i> <small id="remove_fav">(Enlever des favoris)</small>
+                                @else
                                     <i class="far fa-heart fa-sm"></i> <small id="add_fav">(Ajouter en favori)</small>
-                                {{--@endif--}}
+                                @endif
                             {{--@endif--}}
                         </span>
                     </p>
@@ -103,5 +103,6 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" value="{{ $article->id }}" id="idArticle">
     </div>
 @endsection

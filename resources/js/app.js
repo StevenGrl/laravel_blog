@@ -1,5 +1,11 @@
 require('./bootstrap');
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 /* UPLOAD ARTICLES */
 $(document).ready(function () {
     let imageFile = $('#article_imageFile')
@@ -35,3 +41,34 @@ $(document).ready(function() {
     }
 })
 /* End navbar active items */
+
+/* Like articles */
+$(document).ready(function() {
+    let heart = $('.fa-heart')
+    $(heart).on('click', function() {
+        if (heart.attr('class').match('far')) {
+            heart.removeClass('far').addClass('fas').toggleClass('fa-lg fa-sm')
+            $('#add_fav').text('(Enlever des favoris)').attr('id', 'remove_fav')
+            $.ajax({
+                type: 'POST',
+                url: '/articles/like/' +  $('#idArticle').val(),
+                data: {},
+                success: function (res) {
+                    console.log(res)
+                }
+            });
+        } else {
+            heart.removeClass('fas').addClass('far').toggleClass('fa-sm fa-lg')
+            $('#remove_fav').text('(Ajouter en favori)').attr('id', 'add_fav')
+            $.ajax({
+                type: 'POST',
+                url: '/articles/unlike/' +  $('#idArticle').val(),
+                data: {},
+                success: function (res) {
+                    console.log(res)
+                }
+            });
+        }
+    })
+})
+/* End like articles */

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Category;
 use App\Http\Requests\ArticleRequest;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Request;
 
 class ArticlesController extends Controller
 {
@@ -75,6 +76,30 @@ class ArticlesController extends Controller
 
         $article->save();
 
-        return view('articles.show', compact('article'));
+        $isLiked = Auth::user()->favoritesArticles->contains($article);
+
+        return view('articles.show', compact('article', 'isLiked'));
+    }
+
+    public function like(Request $request, $article_id) {
+        if(Auth::check()) {
+            $user = Auth::user();
+
+            $user->favoritesArticles()->attach($article_id);
+
+            return response('Done');
+        }
+        return response('Unauthorized ', 401);
+    }
+
+    public function unlike(Request $request, $article_id) {
+        if(Auth::check()) {
+            $user = Auth::user();
+
+            $user->favoritesArticles()->detach($article_id);
+
+            return response('Done');
+        }
+        return response('Unauthorized ', 401);
     }
 }

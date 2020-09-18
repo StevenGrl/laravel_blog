@@ -28,4 +28,7 @@ Route::group(['middleware' => 'CategoriesShare'], function(){
     Route::post('/articles/store', ['as' => 'store_article', 'uses' => 'ArticlesController@store']);
 });
 
+Route::post('/articles/like/{article_id}', 'ArticlesController@like');
+Route::post('/articles/unlike/{article_id}', 'ArticlesController@unlike');
+
 Auth::routes();
