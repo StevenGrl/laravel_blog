@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1 class="text-center mb-3">{{ $title }}</h1>
     @forelse($articles as $article)
         @include('articles._view_in_list')
     @empty

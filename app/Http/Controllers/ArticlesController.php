@@ -27,15 +27,21 @@ class ArticlesController extends Controller
 
         $currentPath = 'index_article';
 
-        return view('articles.index', compact('articles', 'currentPath'));
+        $title = 'Liste des articles - Toutes catégories';
+
+        return view('articles.index', compact('articles', 'currentPath', 'title'));
     }
 
     public function indexByCategory($category, $page) {
+        $find_category = Category::find($category);
+
         $articles = Article::published()->where('category_id', $category)->paginate(10, ['*'], 'page', $page);
 
         $currentPath = 'index_article_by_category';
 
-        return view('articles.index', compact('articles', 'currentPath', 'category'));
+        $title = 'Liste des articles - ' . $find_category->name;
+
+        return view('articles.index', compact('articles', 'currentPath', 'category', 'title'));
     }
 
     public function new() {
