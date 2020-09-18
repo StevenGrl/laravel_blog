@@ -21,8 +21,7 @@
                 </p>
             </div>
             <div>
-                {{--<a class="badge badge-info" href="{{ route('category_article_index', ['id' => $category->id]) }}">--}}
-                <a class="badge badge-info" href="#">
+                <a class="badge badge-info" href="{{ route('index_article_by_category', ['category' => $article->category->id, 'page' => 1]) }}">
                     {{ $article->category->name }}
                 </a>
                 <span class="ml-2">
