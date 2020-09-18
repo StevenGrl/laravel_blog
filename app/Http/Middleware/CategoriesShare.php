@@ -18,7 +18,9 @@ class CategoriesShare
      */
     public function handle($request, Closure $next)
     {
-        $categories = Category::all();
+        $categories = Category::with(['articles' => function($query) {
+            $query->where('published', 1);
+        }])->get();
         $nbArticles = count(Article::published()->get());
         View::share(compact('categories', 'nbArticles'));
         return $next($request);

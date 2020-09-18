@@ -23,6 +23,8 @@ class ArticlesController extends Controller
     public function index($page = 1) {
         $articles = Article::published()->paginate(10, ['*'], 'page', $page);
 
+        $articles->load('category');
+
         $currentPath = 'index_article';
 
         return view('articles.index', compact('articles', 'currentPath'));
@@ -52,6 +54,8 @@ class ArticlesController extends Controller
 
         $article->image = $imgName;
 
+        $article->nbViews = 0;
+
         $article->save();
 
         return view('home');
@@ -59,6 +63,10 @@ class ArticlesController extends Controller
 
     public function show($id) {
         $article = Article::findOrFail($id);
+
+        $article->nbViews = $article->nbViews + 1;
+
+        $article->save();
 
         return view('articles.show', compact('article'));
     }

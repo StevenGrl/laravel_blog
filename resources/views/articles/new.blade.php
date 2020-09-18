@@ -3,8 +3,8 @@
 @section('content')
     @if($errors->any())
         <pre>
-        {{ var_dump($errors) }}
-            </pre>
+            {{ var_dump($errors) }}
+        </pre>
     @endif
     <div class="card col-9 mx-auto p-0">
         <div class="card-header text-center">

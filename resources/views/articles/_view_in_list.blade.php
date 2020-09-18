@@ -13,9 +13,9 @@
             </h2>
             <div class="details">
                 <p class="font-weight-light font-italic text-muted mb-0">
-                    <small>Date de création : {{ date('Y-m-d H:i', $article->created_at) }}
+                    <small>Date de création : {{ $article->created_at->format('Y-m-d H:i') }}
                         @if($article->created_at < $article->updated_at)
-                            Dernière mise à jour : {{ date('Y-m-d H:i', $article->updated_at) }}
+                            | Dernière mise à jour : {{ $article->updated_at->format('Y-m-d H:i') }}
                         @endif
                     </small>
                 </p>

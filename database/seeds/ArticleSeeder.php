@@ -14,14 +14,16 @@ class ArticleSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('fr_FR');
-        foreach (range(1, 50) as $index) {
+        for($i = 1; $i <= 50; $i++) {
             DB::table('articles')->insert([
                 'title' => $faker->words($faker->numberBetween(1, 4), $asText = true),
                 'image' => $faker->numberBetween(1, 10) . '.jpg',
                 'content' => $faker->text(700),
                 'published' => $faker->boolean(),
                 'nbViews' => $faker->numberBetween(0, 500),
-                'category_id' => $faker->numberBetween(1, 6)
+                'category_id' => $faker->numberBetween(1, 6),
+                'created_at' => $faker->date('Y-m-d H:i'),
+                'updated_at' => $faker->date('Y-m-d H:i'),
             ]);
         }
     }

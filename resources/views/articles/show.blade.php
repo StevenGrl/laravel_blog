@@ -52,9 +52,9 @@
                 <div class="row">
                     <p class="col-12 pl-0 mb-0">
                         <small class="font-italic text-muted">
-                            Date de création : {{ date('Y-m-d H:i', $article->created_at) }}
+                            Date de création : {{ $article->created_at->format('Y-m-d H:i') }}
                             @if($article->created_at != $article->updated_at)
-                            | Dernière mise à jour : {{ date('Y-m-d H:i', $article->updated_at) }}
+                            | Dernière mise à jour : {{ $article->updated_at->format('Y-m-d H:i') }}
                             @endif
                             |
                         </small>

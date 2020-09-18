@@ -57,11 +57,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Se connecter</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">S'inscrire</a>
                                 </li>
                             @endif
                         @else
@@ -74,7 +74,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Se déconnecter
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -109,7 +109,7 @@
                                                 <a href="{{ route('index_article_by_category', ['category' => $category->id, 'page' => 1]) }}" class="text-decoration-none">
                                                     {{ $category->name }}
                                                 </a>
-                                                <span class="badge badge-primary">{{ count($category->articles->where('published', 1)) }}</span>
+                                                <span class="badge badge-primary">{{ count($category->articles) }}</span>
                                             </li>
                                         @endforeach
                                     </ul>

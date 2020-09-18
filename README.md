@@ -60,3 +60,33 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 "# laravel_blog" 
+
+
+##How to launch project
+----------
+
+To clone and run this project, you'll need Git, PHP (v7.3.21), Composer (v1.10.13) and NPM (v6.14.6). From your command line:
+
+**Clone this repository**  
+$ git clone https://github.com/StevenGrl/laravel_blog.git
+
+**Go into the repository**  
+$ cd laravel_blog
+
+**Install dependencies**  
+$ composer install  
+$ npm install
+
+**Compile JS and CSS files**  
+$ npm run dev
+
+**Init Database**  
+Make a file in database folder called database.sqlite  
+$ php artisan migrate  
+
+**Load some data**  
+$ php artisan db:seed
+
+**Launch PHP  Server** (DEV Only)    
+$ php artisan serve
+and then you can go on the url that the console gives you
