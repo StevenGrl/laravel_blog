@@ -24,6 +24,7 @@ Route::group(['middleware' => 'CategoriesShare'], function(){
     Route::get('/articles/show/{id}', ['as' => 'show_article', 'uses' => 'ArticlesController@show']);
     Route::get('/articles/index/{page}', ['as' => 'index_article', 'uses' => 'ArticlesController@index']);
     Route::get('/articles/index/{category}/{page}', ['as' => 'index_article_by_category', 'uses' => 'ArticlesController@indexByCategory']);
+    Route::get('/articles/favorites_index', ['as' => 'favorites_index_article', 'uses' => 'ArticlesController@favorites_index']);
 
     Route::post('/articles/store', ['as' => 'store_article', 'uses' => 'ArticlesController@store']);
 });

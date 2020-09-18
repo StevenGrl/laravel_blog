@@ -33,6 +33,18 @@ class ArticlesController extends Controller
         return view('articles.index', compact('articles', 'currentPath', 'title'));
     }
 
+    public function favorites_index($page = 1) {
+        $articles = Auth::user()->favoritesArticles;
+
+        $articles->load('category');
+
+        $currentPath = 'favorites_index_article';
+
+        $title = 'Liste de mes articles favoris';
+
+        return view('articles.index', compact('articles', 'currentPath', 'title'));
+    }
+
     public function indexByCategory($category, $page) {
         $find_category = Category::find($category);
 

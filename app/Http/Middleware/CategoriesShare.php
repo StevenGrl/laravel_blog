@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Article;
 use App\Category;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class CategoriesShare
@@ -22,7 +23,12 @@ class CategoriesShare
             $query->where('published', 1);
         }])->get();
         $nbArticles = count(Article::published()->get());
-        View::share(compact('categories', 'nbArticles'));
+        if (Auth::check()) {
+            $nbArticlesFavorites = count(Auth::user()->favoritesArticles);
+            View::share(compact('categories', 'nbArticles', 'nbArticlesFavorites'));
+        } else {
+            View::share(compact('categories', 'nbArticles'));
+        }
         return $next($request);
     }
 }

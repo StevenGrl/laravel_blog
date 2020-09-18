@@ -7,7 +7,7 @@
     @empty
         <h1 class="text-center">Pas d'article pour le moment</h1>
     @endforelse
-    @if($articles->total() >= 10)
+    @if($currentPath != 'favorites_index_article' && $articles->total() >= 10)
         @if($currentPath === 'index_article')
             @include('_pagination', ['paginate' => $articles, 'currentPath' => $currentPath])
         @else
