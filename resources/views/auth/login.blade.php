@@ -22,6 +22,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    ex: test1 (1,2,3,4,5)
+                                </small>
                             </div>
                         </div>
 
@@ -36,6 +39,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    Mot de passe : test1234
+                                </small>
                             </div>
                         </div>
 
