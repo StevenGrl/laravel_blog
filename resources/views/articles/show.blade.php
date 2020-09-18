@@ -58,7 +58,7 @@
                             @endif
                             |
                         </small>
-                        <a class="badge badge-info" href="#">
+                        <a class="badge badge-info" href="{{ route('index_article_by_category', ['category' => $article->category->id, 'page' => 1]) }}">
                             {{ $article->category->name }}
                         </a>
                         <span>
@@ -67,9 +67,9 @@
                             50 <i class="far fa-comments"></i> |
                             {{--@if(is_granted('like', article))--}}
                                 {{--@if(article in app.user.favouriteArticles)--}}
-                                    {{--<i class="fas fa-heart fa-lg"></i> <small>(Enlever des favoris)</small>--}}
+                                    {{--<i class="fas fa-heart fa-lg"></i> <small id="remove_fav">(Enlever des favoris)</small>--}}
                                 {{--@else--}}
-                                    <i class="far fa-heart fa-sm"></i> <small>(Ajouter en favori)</small>
+                                    <i class="far fa-heart fa-sm"></i> <small id="add_fav">(Ajouter en favori)</small>
                                 {{--@endif--}}
                             {{--@endif--}}
                         </span>

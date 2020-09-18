@@ -27,13 +27,13 @@
                     {!! Form::label('category_id', 'Catégorie') !!}
                     {!! Form::select('category_id', $list_categories, null, ['class' => 'form-control']) !!}
                 </div>
+                <div class="custom-control custom-switch text-center">
+                    {!! Form::checkbox('published', 1, null, ['id' => 'published', 'class' => 'custom-control-input']) !!}
+                    <label for="published" class="custom-control-label">Publier</label>
+                </div>
                 <div class="form-group">
                     {!! Form::label('content', 'Contenu') !!}
                     {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
-                </div>
-                <div class="custom-control custom-switch">
-                    {!! Form::checkbox('published', 1, null, ['id' => 'published', 'class' => 'custom-control-input']) !!}
-                    <label for="published" class="custom-control-label">Publier</label>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Créer l'article</button>
