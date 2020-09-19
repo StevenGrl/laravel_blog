@@ -25,7 +25,15 @@ class ArticleSeeder extends Seeder
                 'created_at' => $faker->date('Y-m-d H:i'),
                 'updated_at' => $faker->date('Y-m-d H:i'),
             ]);
+            if($faker->boolean) {
+                for($j = 1; $j < 5; $j++) {
+                    DB::table('favorites_user_articles')->insert([
+                        'user_id' => $j,
+                        'article_id' => $i
+                    ]);
+                }
+            }
         }
-        $this->call(UserSeeder::class);
+        $this->call(CommentsSeeder::class);
     }
 }

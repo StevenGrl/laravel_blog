@@ -27,6 +27,8 @@ Route::group(['middleware' => 'CategoriesShare'], function(){
     Route::get('/articles/favorites_index', ['as' => 'favorites_index_article', 'uses' => 'ArticlesController@favorites_index']);
 
     Route::post('/articles/store', ['as' => 'store_article', 'uses' => 'ArticlesController@store']);
+
+    Route::post('/comments/store', ['as' => 'store_comment', 'uses' => 'CommentsController@store']);
 });
 
 Route::post('/articles/like/{article_id}', 'ArticlesController@like');

@@ -63,8 +63,7 @@
                         </a>
                         <span>
                             {{ $article->nbViews }} <i class="far fa-eye fa-sm"></i> |
-                            {{--{{ count($article->comments) }} <i class="far fa-comments"></i>--}}
-                            50 <i class="far fa-comments"></i> |
+                            {{ count($article->comments) }} <i class="far fa-comments"></i>
                             {{--@if(is_granted('like', article))--}}
                                 @if($isLiked)
                                     <i class="fas fa-heart fa-lg"></i> <small id="remove_fav">(Enlever des favoris)</small>
@@ -78,28 +77,49 @@
                         <div class="dropdown-divider border border-secondary col-3"></div>
                     </div>
                     <p class="mb-0">{{ $article->content }}</p>
-                    {{--@if(count($article->comments) > 0)--}}
-                        <div class="dropdown-divider mx-auto border border-secondary col-2 mt-3"></div>
-                        <h2 class="mt-0 col-12 pl-0 text-center">~ Commentaires ~</h2>
-                        {{--@forelse($article->comments as $comment)--}}
-                            {{--<div class="col-12">--}}
-                                {{--<div class="border-left border-secondary mb-3">--}}
-                                    {{--<blockquote class="blockquote ml-4">--}}
-                                        {{--<div class="font-weight-bold">--}}
-                                            {{--{{ $comment->title }} |--}}
-                                            {{--<span class="font-italic font-weight-normal">{{ $comment->author }} :</span>--}}
-                                            {{--<small>{{ $comment->created_at }}</small>--}}
-                                        {{--</div>--}}
-                                        {{--<footer class="blockquote-footer">--}}
-                                            {{--<div class="font-italic">--}}
-                                                {{--{{ $comment->message }}--}}
-                                            {{--</div>--}}
-                                        {{--</footer>--}}
-                                    {{--</blockquote>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--@endfor--}}
-                    {{--@endif--}}
+                    <div class="dropdown-divider mx-auto border border-secondary col-2 mt-3"></div>
+                    <h2 class="mt-0 col-12 pl-0 text-center">~ Commentaires ~</h2>
+                    @forelse($article->comments as $comment)
+                        <div class="col-12">
+                            <div class="border-left border-secondary mb-3">
+                                <blockquote class="blockquote ml-4">
+                                    <div class="font-weight-bold">
+                                        {{ $comment->title }} |
+                                        <span class="font-italic font-weight-normal">{{ $comment->user->name }} :</span>
+                                        <small>{{ $comment->created_at }}</small>
+                                    </div>
+                                    <footer class="blockquote-footer">
+                                        <div class="font-italic">
+                                            {{ $comment->message }}
+                                        </div>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    @empty
+                        <p>Aucun commentaire pour le moment.</p>
+                    @endforelse
+                    <div class="card col-12">
+                        <div class="card-header">
+                            <h3 class="text-center">Ajouter un commentaire</h3>
+                        </div>
+                        <div class="card-body">
+                            {!! Form::open(['route' => 'store_comment']) !!}
+                            <div class="form-group">
+                                    {!! Form::label('title', 'Titre') !!}
+                                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('message', 'Message') !!}
+                                    {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
+                                </div>
+                            {!! Form::hidden('article_id', $article->id) !!}
+                            <div class="text-center">
+                                <button class="btn btn-primary" type="submit">Envoyer mon commentaire</button>
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

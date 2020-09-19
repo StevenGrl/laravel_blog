@@ -26,8 +26,7 @@
                 </a>
                 <span class="ml-2">
                         {{ $article->nbViews }} <i class="far fa-eye fa-sm"></i> |
-                        {{--{{ count($article->comments) }} <i class="far fa-comments"></i>--}}
-                        50 <i class="far fa-comments"></i>
+                        {{ count($article->comments) }} <i class="far fa-comments"></i>
                     </span>
             </div>
             <span class="text-muted">{{ Str::limit($article->content, 150) }}</span>

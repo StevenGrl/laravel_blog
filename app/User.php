@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function favoritesArticles() {
         return $this->belongsToMany('App\Article', 'favorites_user_articles');
     }
+
+    public function comments() {
+        return $this->belongsToMany('App\Comment');
+    }
 }

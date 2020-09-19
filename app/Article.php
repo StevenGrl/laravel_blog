@@ -12,6 +12,10 @@ class Article extends Model
         return $this->belongsToMany('App\User', 'favorites_user_articles');
     }
 
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
+
     public function category() {
         return $this->belongsTo('App\Category');
     }

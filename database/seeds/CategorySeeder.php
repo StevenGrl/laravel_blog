@@ -22,6 +22,6 @@ class CategorySeeder extends Seeder
                 'updated_at' => $faker->date('Y-m-d H:i'),
             ]);
         }
-        $this->call(ArticleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

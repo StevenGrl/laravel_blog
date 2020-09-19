@@ -4,7 +4,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder extends Seeder
+class CommentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,15 +14,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('fr_FR');
-        for($i = 1; $i < 5; $i++) {
-            DB::table('users')->insert([
-                'name' => 'user' . $i,
-                'email' => 'test' . $i . '@test.test',
-                'password' => bcrypt('test1234'),
+        for($i = 1; $i <= 50; $i++) {
+            DB::table('comments')->insert([
+                'title' => $faker->words($faker->numberBetween(1, 4), $asText = true),
+                'message' => $faker->text(700),
+                'article_id' => $faker->numberBetween(1, 50),
+                'user_id' => $faker->numberBetween(1, 4),
                 'created_at' => $faker->date('Y-m-d H:i'),
                 'updated_at' => $faker->date('Y-m-d H:i'),
             ]);
         }
-        $this->call(ArticleSeeder::class);
     }
 }
