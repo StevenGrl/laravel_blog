@@ -23,7 +23,7 @@
                                     </span>
                                 @enderror
                                 <small id="passwordHelpBlock" class="form-text text-muted">
-                                    ex: test1 (1,2,3,4,5)
+                                    ex: test1@test.test (1,2,3,4,5)
                                 </small>
                             </div>
                         </div>
