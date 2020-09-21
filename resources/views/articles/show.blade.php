@@ -64,7 +64,7 @@
                         <span>
                             {{ $article->nbViews }} <i class="far fa-eye fa-sm"></i> |
                             {{ count($article->comments) }} <i class="far fa-comments"></i>
-                            {{--@if(is_granted('like', article))--}}
+                            {{--@if($article->user !== Auth::user()))--}}
                                 @if($isLiked)
                                     <i class="fas fa-heart fa-lg"></i> <small id="remove_fav">(Enlever des favoris)</small>
                                 @else
