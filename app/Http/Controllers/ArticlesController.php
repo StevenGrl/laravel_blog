@@ -26,6 +26,8 @@ class ArticlesController extends Controller
 
         $articles->load('category');
 
+        $articles->load('comments');
+
         $currentPath = 'index_article';
 
         $title = 'Liste des articles - Toutes catégories';
